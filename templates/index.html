@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center py-16 bg-white rounded-xl shadow-lg mt-8">
+    <h1 class="text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+        Штучний Інтелект, який <span class="text-red-600">НЕ</span> пише нудні пости.
+    </h1>
+    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Генеруйте агресивний, провокаційний та висококонверсійний рекламний контент за 5 секунд. Ідеально для Facebook, Instagram та Email-розсилок.
+    </p>
+    
+    {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('login') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white text-xl font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-xl">
+            Почати БЕЗКОШТОВНИЙ Пробний Період (5 Кредитів)
+        </a>
+        <p class="text-sm text-gray-500 mt-3">Без кредитної картки. Реєстрація за 30 секунд.</p>
+    {% else %}
+        <a href="{{ url_for('dashboard') }}" class="inline-block bg-green-600 hover:bg-green-700 text-white text-xl font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-xl">
+            Перейти до Інструменту
+        </a>
+    {% endif %}
+</div>
+
+<!-- Блок Тарифів (Pricing) -->
+<div id="pricing" class="mt-20">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Тарифи, які приносять результат</h2>
+    <div class="flex justify-center">
+        <div class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-sm border-4 border-indigo-600 transform hover:scale-[1.02] transition duration-300">
+            <h3 class="text-3xl font-bold text-indigo-600 mb-3">Преміум</h3>
+            <p class="text-gray-500 mb-6">Для професіоналів та команд.</p>
+            
+            <p class="text-5xl font-extrabold text-gray-900 mb-6">
+                €100<span class="text-xl font-medium text-gray-500"> / міс</span>
+            </p>
+
+            <ul class="text-left space-y-3 text-gray-700 mb-8">
+                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Необмежена генерація</li>
+                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Доступ до агресивного AI-модуля</li>
+                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Пріоритетна підтримка</li>
+            </ul>
+
+            <form action="{{ url_for('checkout') }}" method="POST">
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition duration-150">
+                    Підписатися за €100
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
